@@ -1,14 +1,10 @@
 import os
-from dotenv import load_dotenv
 
-# Load environment variables from .env file only if they are not already set
-load_dotenv(override=False)
-
-# Force fetch from system environment (ECS task definition)
-HF_TOKEN = os.getenv("HF_TOKEN")
+# Load from environment (ECS will inject at runtime)
+HF_TOKEN = os.environ.get("HF_TOKEN")
 
 if not HF_TOKEN:
-    raise ValueError("HF_TOKEN is missing. Check ECS task env vars or .env file.")
+    raise EnvironmentError("HF_TOKEN is not set. Please check ECS Task definition environment variables.")
 
 # Constants
 HUGGINGFACE_REPO_ID = "mistralai/Mistral-7B-Instruct-v0.3"

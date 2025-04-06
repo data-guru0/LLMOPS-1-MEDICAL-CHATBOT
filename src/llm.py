@@ -15,24 +15,31 @@ def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = HF_
     :return: An instance of HuggingFaceEndpoint (LLM).
     """
     try:
-        logger.info(f"Loading LLM from Hugging Face: {huggingface_repo_id}")
+        # Fallback: Try to re-read from system environment if hf_token is None
+        if not hf_token:
+            logger.warning("HF_TOKEN not passed explicitly, trying to fetch from environment again...")
+            import os
+            hf_token = os.getenv("HF_TOKEN")
 
-        # Initialize the Hugging Face LLM endpoint
+        if not hf_token:
+            raise ValueError("🤒 HF_TOKEN is missing. Cannot load LLM.")
+
+        logger.info(f"✅ Loading LLM from Hugging Face: {huggingface_repo_id}")
+
         llm = HuggingFaceEndpoint(
-                repo_id=huggingface_repo_id,
-                task="text-generation",
-                temperature=0.5,
-                model_kwargs={
-                    "max_length": 512
-                },
-                huggingfacehub_api_token=hf_token  # ✅ Proper way to pass token
-            )
+            repo_id=huggingface_repo_id,
+            task="text-generation",
+            temperature=0.5,
+            model_kwargs={
+                "max_length": 512
+            },
+            huggingfacehub_api_token=hf_token
+        )
 
-
-        logger.info("LLM successfully loaded.")
+        logger.info("🚀 LLM successfully loaded.")
         return llm
 
     except Exception as e:
-        error_message = CustomException("Failed to load LLM from Hugging Face", e)
+        error_message = CustomException("❌ Failed to load LLM from Hugging Face", e)
         logger.error(str(error_message))
         return None
