@@ -1,5 +1,5 @@
 import logging
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain.llms import HuggingFaceHub
 from config.config import HF_TOKEN, HUGGINGFACE_REPO_ID
 from src.logger import get_logger
 from src.custom_exception import CustomException
@@ -26,15 +26,11 @@ def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = HF_
 
         logger.info(f"✅ Loading LLM from Hugging Face: {huggingface_repo_id}")
 
-        llm = HuggingFaceEndpoint(
-            repo_id=huggingface_repo_id,
-            task="text-generation",
-            temperature=0.5,
-            model_kwargs={
-                "max_length": 512
-            },
-            huggingfacehub_api_token="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"
-        )
+        llm = HuggingFaceHub(
+                repo_id=huggingface_repo_id,  # or "tiiuae/falcon-7b-instruct"
+                model_kwargs={"temperature": 0.5, "max_length": 256},
+                huggingfacehub_api_token=hf_token
+            )
 
         logger.info("🚀 LLM successfully loaded.")
         return llm

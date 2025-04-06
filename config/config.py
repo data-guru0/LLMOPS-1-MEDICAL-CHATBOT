@@ -7,7 +7,7 @@ if not HF_TOKEN:
     raise EnvironmentError("HF_TOKEN is not set. Please check ECS Task definition environment variables.")
 
 # Constants
-HUGGINGFACE_REPO_ID = "mistralai/Mistral-7B-Instruct-v0.3"
+HUGGINGFACE_REPO_ID = "google/flan-t5-small"
 DB_FAISS_PATH = "vectorstore/db_faiss"
 DATA_PATH = "data/"
 CHUNK_SIZE = 500
