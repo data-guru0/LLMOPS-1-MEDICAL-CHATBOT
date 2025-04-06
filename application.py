@@ -2,7 +2,7 @@ import streamlit as st
 from src.retriever import create_qa_chain
 
 def main():
-    st.title("🔍 AI Medical Chatbotsss")
+    st.title("🔍 AI Medical Chatbotk")
     
     if 'messages' not in st.session_state:
         st.session_state.messages = []
