@@ -19,14 +19,15 @@ def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = HF_
 
         # Initialize the Hugging Face LLM endpoint
         llm = HuggingFaceEndpoint(
-            repo_id=huggingface_repo_id,
-            task="text-generation",
-            temperature=0.5,
-            model_kwargs={
-                "token": hf_token,
-                "max_length": 512
-            }
-        )
+                repo_id=huggingface_repo_id,
+                task="text-generation",
+                temperature=0.5,
+                model_kwargs={
+                    "max_length": 512
+                },
+                huggingfacehub_api_token=hf_token  # ✅ Proper way to pass token
+            )
+
 
         logger.info("LLM successfully loaded.")
         return llm
