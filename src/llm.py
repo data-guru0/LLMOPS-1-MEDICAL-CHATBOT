@@ -33,7 +33,7 @@ def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = HF_
             model_kwargs={
                 "max_length": 512
             },
-            huggingfacehub_api_token="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"
+            huggingfacehub_api_token=hf_token
         )
 
         logger.info("🚀 LLM successfully loaded.")
