@@ -1,6 +1,7 @@
 import streamlit as st
 from src.retriever import create_qa_chain
 from dotenv import load_dotenv
+
 load_dotenv()  
 
 def main():

@@ -5,7 +5,7 @@ FROM python:3.10
 WORKDIR /app
 
 # Copy files
-
+COPY .env .env
 COPY . .
 
 # Install dependencies
