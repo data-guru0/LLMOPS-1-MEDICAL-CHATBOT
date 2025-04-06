@@ -53,7 +53,7 @@ pipeline{
 
                         sh """
                         aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ecrUrl}
-                        docker build -t ${env.ECR_REPO}:${IMAGE_TAG} .
+                        docker build -t ${env.ECR_REPO}:${IMAGE_TAG} --build-arg HF_TOKEN=$HF_TOKEN .
                         docker tag ${env.ECR_REPO}:${IMAGE_TAG} ${ecrUrl}:${IMAGE_TAG}
                         docker push ${ecrUrl}:${IMAGE_TAG}
                         """
