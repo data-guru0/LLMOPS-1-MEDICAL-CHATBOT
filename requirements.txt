@@ -5,4 +5,5 @@ faiss-cpu
 pypdf
 huggingface_hub
 streamlit
+python-dotenv
 flask

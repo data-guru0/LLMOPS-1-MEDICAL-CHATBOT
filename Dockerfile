@@ -4,11 +4,8 @@ FROM python:3.10
 # Set the working directory
 WORKDIR /app
 
-# Declare and use Hugging Face Token as build-time and run-time environment variable
-ARG HF_TOKEN
-ENV HF_TOKEN=${HF_TOKEN}
+# Copy files
 
-# Copy all files including .env if needed
 COPY . .
 
 # Install dependencies
