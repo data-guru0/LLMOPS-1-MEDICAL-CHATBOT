@@ -19,6 +19,14 @@ pipeline{
             }
         }
 
+        stage('Inject HuggingFace Token') {
+            steps {
+                withCredentials([string(credentialsId: 'huggingface-token', variable: 'HF_TOKEN')]) {
+                    sh 'echo "HUGGINGFACE_TOKEN=$HF_TOKEN" > .env'
+                }
+            }
+        }
+
         stage('SonarQube Analysis'){
 			steps {
 				withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
