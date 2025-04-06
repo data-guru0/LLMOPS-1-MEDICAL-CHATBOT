@@ -22,7 +22,7 @@ pipeline{
         stage('Inject HuggingFace Token') {
             steps {
                 withCredentials([string(credentialsId: 'huggingface-token', variable: 'HF_TOKEN')]) {
-                    sh 'echo "HUGGINGFACE_TOKEN=$HF_TOKEN" > .env'
+                    sh 'echo "HF_TOKEN=$HF_TOKEN" > .env'
                 }
             }
         }
