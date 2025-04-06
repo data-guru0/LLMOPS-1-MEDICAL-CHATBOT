@@ -1,10 +1,8 @@
-import os
-import logging
 from langchain.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 from src.llm import load_llm
 from src.vector_store import load_vector_store
-from src.config import HUGGINGFACE_REPO_ID, HF_TOKEN
+from config.config import HUGGINGFACE_REPO_ID, HF_TOKEN
 from src.logger import get_logger
 from src.custom_exception import CustomException
 

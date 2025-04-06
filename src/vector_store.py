@@ -1,7 +1,7 @@
 import os
 from langchain_community.vectorstores import FAISS
 from src.embeddings import get_embedding_model
-from src.config import DB_FAISS_PATH
+from config.config import DB_FAISS_PATH
 from src.logger import get_logger
 from src.custom_exception import CustomException
 

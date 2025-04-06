@@ -1,7 +1,7 @@
 import os
 from src.pdf_loader import load_pdf_files, create_text_chunks
 from src.vector_store import save_vector_store
-from src.config import DB_FAISS_PATH
+from config.config import DB_FAISS_PATH
 from src.logger import get_logger
 from src.custom_exception import CustomException
 

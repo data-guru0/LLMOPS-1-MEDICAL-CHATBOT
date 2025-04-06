@@ -1,6 +1,6 @@
 import logging
 from langchain_huggingface import HuggingFaceEndpoint
-from src.config import HF_TOKEN, HUGGINGFACE_REPO_ID
+from config.config import HF_TOKEN, HUGGINGFACE_REPO_ID
 from src.logger import get_logger
 from src.custom_exception import CustomException
 

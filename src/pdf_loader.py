@@ -1,7 +1,7 @@
 import os
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from src.config import DATA_PATH, CHUNK_SIZE, CHUNK_OVERLAP
+from config.config import DATA_PATH, CHUNK_SIZE, CHUNK_OVERLAP
 from src.logger import get_logger
 from src.custom_exception import CustomException
 
