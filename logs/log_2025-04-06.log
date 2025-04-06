@@ -1,0 +1,15 @@
+2025-04-06 21:00:24,083 - INFO - Loading vector store...
+2025-04-06 21:00:24,083 - INFO - \U0001f50d Initializing Hugging Face Embedding Model...
+2025-04-06 21:01:19,384 - INFO - Use pytorch device_name: cpu
+2025-04-06 21:01:19,384 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-04-06 21:01:24,054 - INFO - \u2705 Hugging Face Embedding Model successfully loaded.
+2025-04-06 21:01:24,055 - INFO - Loading FAISS vector store from: vectorstore/db_faiss
+2025-04-06 21:01:24,063 - INFO - Loading faiss with AVX2 support.
+2025-04-06 21:01:24,659 - INFO - Successfully loaded faiss with AVX2 support.
+2025-04-06 21:01:24,690 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-06 21:01:24,791 - INFO - Initializing LLM for RetrievalQA...
+2025-04-06 21:01:24,791 - INFO - Loading LLM from Hugging Face: mistralai/Mistral-7B-Instruct-v0.3
+2025-04-06 21:01:25,145 - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-04-06 21:01:25,146 - INFO - LLM successfully loaded.
+2025-04-06 21:01:25,146 - INFO - Creating RetrievalQA chain...
+2025-04-06 21:01:25,147 - INFO - QA chain successfully created.
