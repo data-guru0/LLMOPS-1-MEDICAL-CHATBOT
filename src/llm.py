@@ -1,20 +1,18 @@
 from langchain_huggingface import HuggingFaceEndpoint
-from config.config import HF_TOKEN, HUGGINGFACE_REPO_ID
+from config.config import HUGGINGFACE_REPO_ID, get_hf_token
 from src.logger import get_logger
 import os
 from src.custom_exception import CustomException
 
 logger = get_logger(__name__)
 
-def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = None):
+def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID):
     try:
-        # Step 1: Try to get from parameter > env > config
-        token = hf_token or os.getenv("HF_TOKEN")
-
+        token = get_hf_token()
         if not token:
-            raise CustomException("🚨 HF_TOKEN is missing. Cannot load model.")
+            raise CustomException("HF_TOKEN is missing.")
 
-        logger.info("✅ HF_TOKEN loaded successfully")
+        logger.info(f"HF_TOKEN length: {len(token)}")
 
         llm = HuggingFaceEndpoint(
             repo_id=huggingface_repo_id,
@@ -24,14 +22,8 @@ def load_llm(huggingface_repo_id: str = HUGGINGFACE_REPO_ID, hf_token: str = Non
             huggingfacehub_api_token=token
         )
 
-        logger.info("✅ LLM loaded from HuggingFaceEndpoint.")
         return llm
 
     except Exception as e:
-        logger.exception("💥 Failed to load LLM:")
-        return None
-
-    except Exception as e:
-        error_message = CustomException("Failed to load LLM from Hugging Face", e)
-        logger.error(str(error_message))
+        logger.exception("Failed to load Hugging Face model.")
         return None
